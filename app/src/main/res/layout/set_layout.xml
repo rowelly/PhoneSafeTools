@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:rowelly="http://schemas.android.com/apk/res/com.rowelly.luoli.PhoneSafeTools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:padding="5dp"
+              android:orientation="vertical"
+    >
+    <TextView
+        style="@style/TitleStyle"
+        android:text="功能中心"
+        />
+    <com.rowelly.luoli.user_defined.SettingItemView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/siv"
+        rowelly:title="自动更新设置"
+        rowelly:desc_on="自动更新已经开启"
+        rowelly:desc_off="自动更新已经关闭"/>
+</LinearLayout>
