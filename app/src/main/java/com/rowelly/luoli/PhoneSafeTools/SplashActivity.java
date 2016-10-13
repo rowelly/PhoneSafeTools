@@ -10,7 +10,6 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +19,7 @@ import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.rowelly.luoli.untils.StreamUntils;
+import com.rowelly.luoli.user_defined.SettingItemView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -75,7 +75,7 @@ public class SplashActivity extends Activity {
     private ProgressBar pbh;
     private TextView tv2;
 
-
+//这是台式机提交的。
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,9 +85,9 @@ public class SplashActivity extends Activity {
         pbh = (ProgressBar)findViewById(R.id.pbH);
         tv.setText(getVersionName());
         View view=View.inflate(this,R.layout.set_layout,null);
-        CheckBox checkBox=(CheckBox) view.findViewById(R.id.cb_status);
-        checkBox.setChecked(false);
-        if(checkBox.isChecked())
+        SettingItemView siv=(SettingItemView) view.findViewById(R.id.siv);
+        siv.setCheck(false);
+        if(siv.isCheck())
             checkVersion();
         else
             Enter_Home();
