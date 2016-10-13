@@ -10,6 +10,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,9 +29,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.SocketTimeoutException;
 import java.net.URL;
-import java.util.concurrent.TimeoutException;
 
 /**
  * Created by LuoLi on 2016/10/2.
@@ -85,7 +84,13 @@ public class SplashActivity extends Activity {
         tv2 = (TextView)findViewById(R.id.tv2);
         pbh = (ProgressBar)findViewById(R.id.pbH);
         tv.setText(getVersionName());
-        checkVersion();
+        View view=View.inflate(this,R.layout.set_layout,null);
+        CheckBox checkBox=(CheckBox) view.findViewById(R.id.cb_status);
+        checkBox.setChecked(false);
+        if(checkBox.isChecked())
+            checkVersion();
+        else
+            Enter_Home();
         //Update_Version();
     }
     public String getVersionName(){
