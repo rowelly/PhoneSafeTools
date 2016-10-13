@@ -75,7 +75,7 @@ public class SplashActivity extends Activity {
     private ProgressBar pbh;
     private TextView tv2;
 
-//这是台式机提交的。
+//这是台式机提交的。之后笔记本又修改了
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
