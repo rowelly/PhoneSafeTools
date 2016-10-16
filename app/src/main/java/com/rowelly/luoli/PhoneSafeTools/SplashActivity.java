@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -45,7 +46,7 @@ public class SplashActivity extends Activity {
     private static int mVersionCode;
     private static String mVersionName;
 
-    Handler  handler=new Handler(){
+    private Handler  handler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what){
@@ -86,12 +87,16 @@ public class SplashActivity extends Activity {
         tv.setText(getVersionName());
         View view=View.inflate(this,R.layout.set_layout,null);
         SettingItemView siv=(SettingItemView) view.findViewById(R.id.siv);
-        siv.setCheck(false);
-        if(siv.isCheck())
+        SharedPreferences sharedPreferences=getSharedPreferences("config",MODE_PRIVATE);
+        boolean status=sharedPreferences.getBoolean("auto_update",true);
+        if(status)
             checkVersion();
-        else
-            Enter_Home();
-        //Update_Version();
+        else {
+            Message message=Message.obtain();
+            message.what=CODE_ENTER_HOME;
+            handler.sendMessageDelayed(message, 2000);
+            //Update_Version();
+        }
     }
     public String getVersionName(){
         String versionName = BuildConfig.VERSION_NAME;
